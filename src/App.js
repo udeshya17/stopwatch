@@ -14,23 +14,26 @@ function App() {
     let timer;
     if (!button) {
       timer = setInterval(() => {
-        setSecond(prevSecond => prevSecond + 1);
-        if (second === 60) { 
-          setSecond(0); 
-          setMinute(prevMinute => prevMinute + 1);
-        }
+        setSecond(prevSecond => {
+          const newSecond = prevSecond + 1;
+          if (newSecond === 60) {
+            setMinute(prevMinute => prevMinute + 1);
+            return 0;
+          }
+          return newSecond;
+        });
       }, 1000);
     }
 
     return () => clearInterval(timer); 
-  }, [button, second]); 
+  }, [button]); 
 
   const handleReset = () => {
-    clearInterval(); 
+    setButton(true); 
     setSecond(0); 
     setMinute(0);
-    setButton(button => !button) 
   }
+
   const formatTime = (minute, second) => {
     return `${minute}:${second < 10 ? `0${second}` : second}`;
   }
