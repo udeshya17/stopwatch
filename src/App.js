@@ -35,7 +35,7 @@ function App() {
   return (
     <div>
       <h1>Stopwatch</h1>
-      Time: {minute} : {second}
+      Time: {minute}:{second.toString().padStart(2, '0')}
       <br />
       <br />
       <button onClick={handleClick}>
