@@ -15,7 +15,7 @@ function App() {
     if (!button) {
       timer = setInterval(() => {
         setSecond(prevSecond => prevSecond + 1);
-        if (second === 59) { 
+        if (second === 60) { 
           setSecond(0); 
           setMinute(prevMinute => prevMinute + 1);
         }
