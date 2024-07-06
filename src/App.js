@@ -31,11 +31,14 @@ function App() {
     setMinute(0);
     setButton(button => !button) 
   }
+  const formatTime = (minute, second) => {
+    return `${minute}:${second < 10 ? `0${second}` : second}`;
+  }
 
   return (
     <div>
       <h1>Stopwatch</h1>
-      Time: {minute}:{second.toString().padStart(2, '0')}
+      Time: {formatTime(minute, second)}
       <br />
       <br />
       <button onClick={handleClick}>
